@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import Carousel from "./components/Carousel";
 
 function App() {
+
   return (
     <Container>
       <NavBar />
@@ -60,7 +61,6 @@ function App() {
           </ul>
         </div>
       </About>
-
       <Services id="services">
         <img src={services} alt="Services" />
 
@@ -89,7 +89,6 @@ function App() {
           </li>
         </ul>
       </Services>
-
       <Contact>
         <img src={contact} alt="Contact" />
         <div>
