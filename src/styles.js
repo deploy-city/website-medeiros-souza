@@ -144,17 +144,21 @@ export const Contact = styled.div`
         height: 200px;
       }
 
+      span {
+        color: #fff;
+      }
+
       button {
         background: #ff000c;
         padding: 10px;
         color: #fff;
         border: 0;
-        width: 90px;
+        width: auto;
         border-radius: 12px;
         font-weight: bold;
         font-size: 16px;
         cursor: pointer;
-        transition: 0.1s;
+        transition: 0.2s;
 
         &:hover {
           background: ${darken(0.1, "#ff000c")};

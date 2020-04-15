@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
+import api from "./services/api";
+import "react-toastify/dist/ReactToastify.min.css";
+
+import { ToastContainer, toast } from "react-toastify";
 
 import about from "./assets/images/about.jpg";
 import services from "./assets/images/services.png";
@@ -16,10 +20,32 @@ import Carousel from "./components/Carousel";
 import { useForm } from "react-hook-form";
 
 function App() {
+  const [loading, setLoading] = useState(false);
+
   const { register, handleSubmit, watch, errors } = useForm();
 
   const handleContactForm = async (data) => {
-    console.log(data);
+    setLoading(true);
+    const { name, email, subject, message: text } = data;
+
+    const emailRegex = new RegExp(
+      /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+    );
+
+    if (!emailRegex.test(email)) {
+      return toast.error("Invalid e-mail address");
+    }
+
+    const body = {
+      to: ["guilherme.pcabo@gmail.com"],
+      from: `${name} <${email}>`,
+      subject,
+      text,
+    };
+
+    await api.post("/send", body);
+    setLoading(false);
+    return toast.success("Your contact request was sent succesfully");
   };
 
   return (
@@ -105,7 +131,9 @@ function App() {
               id="name"
               name="name"
               type="text"
+              required
             />
+            {errors.name && <span>E-mail field is required</span>}
 
             <label htmlFor="">YOUR E-MAIL (REQUIRED): </label>
             <input
@@ -113,18 +141,24 @@ function App() {
               id="email"
               name="email"
               type="email"
+              required
             />
+            {errors.email && <span>E-mail field is required</span>}
 
             <label htmlFor="">SUBJECT:</label>
             <input ref={register} id="subject" name="subject" type="text" />
 
             <label htmlFor="">YOUR MESSAGE HERE</label>
             <textarea ref={register} id="message" name="message" type="text" />
-            <button type="submit">SUBMIT</button>
+            <button type="submit" disabled={loading}>
+              {loading ? "SENDING..." : "SUBMIT"}
+            </button>
           </form>
         </div>
       </Contact>
       <Footer />
+
+      <ToastContainer />
     </Container>
   );
 }
