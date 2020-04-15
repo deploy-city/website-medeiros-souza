@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { darken } from "polished";
 
 import contact from "./assets/images/contact-bg.png";
 
@@ -141,6 +142,23 @@ export const Contact = styled.div`
         padding: 10px;
         color: rgba(0, 0, 0, 0.8);
         height: 200px;
+      }
+
+      button {
+        background: #ff000c;
+        padding: 10px;
+        color: #fff;
+        border: 0;
+        width: 90px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.1s;
+
+        &:hover {
+          background: ${darken(0.1, "#ff000c")};
+        }
       }
     }
   }

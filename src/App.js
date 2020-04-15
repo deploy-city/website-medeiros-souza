@@ -13,8 +13,14 @@ import { Container, About, Services, Contact } from "./styles";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Carousel from "./components/Carousel";
+import { useForm } from "react-hook-form";
 
 function App() {
+  const { register, handleSubmit, watch, errors } = useForm();
+
+  const handleContactForm = async (data) => {
+    console.log(data);
+  };
 
   return (
     <Container>
@@ -89,21 +95,32 @@ function App() {
           </li>
         </ul>
       </Services>
-      <Contact>
+      <Contact id="contact">
         <img src={contact} alt="Contact" />
         <div>
-          <form action="">
+          <form onSubmit={handleSubmit(handleContactForm)}>
             <label htmlFor="name">YOUR NAME (REQUIRED): </label>
-            <input id="name" name="name" type="text" />
+            <input
+              ref={register({ required: true })}
+              id="name"
+              name="name"
+              type="text"
+            />
 
             <label htmlFor="">YOUR E-MAIL (REQUIRED): </label>
-            <input id="email" name="email" type="email" />
+            <input
+              ref={register({ required: true })}
+              id="email"
+              name="email"
+              type="email"
+            />
 
             <label htmlFor="">SUBJECT:</label>
-            <input id="subject" name="subject" type="text" />
+            <input ref={register} id="subject" name="subject" type="text" />
 
             <label htmlFor="">YOUR MESSAGE HERE</label>
-            <textarea id="message" name="message" type="text" />
+            <textarea ref={register} id="message" name="message" type="text" />
+            <button type="submit">SUBMIT</button>
           </form>
         </div>
       </Contact>
