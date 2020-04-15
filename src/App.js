@@ -37,7 +37,7 @@ function App() {
     }
 
     const body = {
-      to: ["guilherme.pcabo@gmail.com"],
+      to: ["dev5@cityconnect.com.br"],
       from: `${name} <${email}>`,
       subject,
       text,
