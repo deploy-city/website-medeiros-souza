@@ -11,7 +11,7 @@ import secondImage from "../../assets/images/main-2.jpg";
 export default function Carousel() {
   return (
     <Container id="home">
-      <CarouselPlugin autoPlay showThumbs={false} showArrows={false}>
+      <CarouselPlugin showThumbs={false} showStatus={false}>
         <div>
           <img src={firstImage} alt="First" />
         </div>

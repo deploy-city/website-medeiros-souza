@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import contact from "./assets/images/contact.png";
+import contact from "./assets/images/contact-bg.png";
 
 export const Container = styled.div`
   position: relative;
@@ -10,14 +10,27 @@ export const About = styled.div`
   padding: 50px 0 80px;
   display: flex;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+
   img {
     height: 400px;
     margin-right: 30px;
+
+    @media (max-width: 768px) {
+      height: auto;
+      width: 100%;
+    }
   }
 
   div {
     padding: 20px 100px 20px 20px;
     color: #404040;
+
+    @media (max-width: 768px) {
+      padding: 40px 30px 0 20px;
+    }
 
     p {
       margin-bottom: 20px;
@@ -49,16 +62,34 @@ export const Services = styled.div`
     justify-content: space-evenly;
     list-style: none;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
     li {
       position: relative;
 
-      img {
+      div {
         height: 400px;
-        border-radius: 2px;
-        -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
-        -moz-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
-        box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
-        transition: 0.2s;
+        position: relative;
+
+        img {
+          height: 100%;
+          border-radius: 2px;
+          -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+          -moz-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+          box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.75);
+          transition: 0.2s;
+        }
+
+        span {
+          position: absolute;
+          bottom: 20px;
+          left: 30px;
+          color: #fff;
+          font-size: 22px;
+          font-weight: bold;
+        }
       }
     }
   }
@@ -74,7 +105,6 @@ export const Contact = styled.div`
 
   img {
     width: 300px;
-    margin-bottom: 50px;
   }
 
   div {

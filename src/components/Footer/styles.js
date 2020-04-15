@@ -13,6 +13,11 @@ export const Container = styled.div`
   color: #fff;
   padding: 20px 40px 10px;
 
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: auto;
+  }
+
   div {
     display: flex;
     flex-direction: column;
@@ -75,7 +80,7 @@ export const Social = styled.div`
     & + a {
       margin-left: 20px;
     }
-    
+
     div {
       background: #ff000c;
       height: 40px;
@@ -100,4 +105,7 @@ export const GoUp = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+  }
 `;

@@ -6,6 +6,7 @@ import services from "./assets/images/services.png";
 import consultoria from "./assets/images/consultoria.jpg";
 import contabilidade from "./assets/images/contabilidade.jpg";
 import imigracao from "./assets/images/imigracao.jpg";
+import contact from "./assets/images/contact.png";
 
 import { Container, About, Services, Contact } from "./styles";
 
@@ -65,19 +66,32 @@ function App() {
 
         <ul>
           <li>
-            <img src={consultoria} alt="Consultoria" />
+            <div>
+              <img src={consultoria} alt="Consultoria" />
+              <span>
+                Tax <br /> Consulting
+              </span>
+            </div>
           </li>
           <li>
-            <img src={contabilidade} alt="Contabilidade" />
+            <div>
+              <img src={contabilidade} alt="Contabilidade" />
+              <span>
+                Business <br /> Accounting
+              </span>
+            </div>
           </li>
           <li>
-            <img src={imigracao} alt="Imigração" />
+            <div>
+              <img src={imigracao} alt="Imigração" />
+              <span>Immigration</span>
+            </div>
           </li>
         </ul>
       </Services>
 
       <Contact>
-        <img src={services} alt="Contact" />
+        <img src={contact} alt="Contact" />
         <div>
           <form action="">
             <label htmlFor="name">YOUR NAME (REQUIRED): </label>
