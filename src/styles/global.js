@@ -3,7 +3,6 @@ import { createGlobalStyle } from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
   * {
     margin: 0;
@@ -28,8 +27,6 @@ export default createGlobalStyle`
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
     -moz-osx-font-smoothing: grayscale;
-    width: 100%;
-    overflow-x: hidden;
   }
 
   button {
