@@ -28,7 +28,7 @@ export const Container = styled.div`
 
     div {
       color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     h3 {

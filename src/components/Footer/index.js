@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import instagram from "../../assets/images/instagram.svg";
 import linkedin from "../../assets/images/linkedin.svg";
+import facebook from "../../assets/images/facebook.svg";
 
 import { MdArrowDropUp } from "react-icons/md";
 import { Container, Social, GoUp } from "./styles";
@@ -19,20 +20,24 @@ export default function Footer() {
         <div>
           <h2>CONTACT INFORMATION</h2>
           <div>
-            <span>ADDRESS: XXXXXXXXXXXXXXXXXXXXX</span>
-            <span>XXXX</span>
-            <span>XXX XXXXX X</span>
+            <span>ADDRESS: 845 N GARLAND AVE, STE 100</span>
+            <span>ORLANDO</span>
+            <span>FL 32801</span>
           </div>
 
           <div>
             <span>PHONE:</span>
-            <span>XXXXXXXXXXXXX</span>
-            <span>XXXXXXXXXXXXX</span>
+            <span>407-326-8484</span>
+          </div>
+
+          <div>
+            <span>FAX:</span>
+            <span>407-604-6519</span>
           </div>
 
           <div>
             <span>EMAIL</span>
-            <span>XXXXXXXX@XXXX.com</span>
+            <span>contact@medeirossouza.com</span>
           </div>
         </div>
 
@@ -40,14 +45,25 @@ export default function Footer() {
           <h2>FOLLOW US</h2>
 
           <Social>
-            <a href="" target="_blank">
+            <a href="Instagram.com/MedeirosSouzaTax" target="_blank">
               <div>
                 <img src={instagram} alt="IG" />
               </div>
             </a>
-            <a href="" target="_blank">
+            <a
+              href="https://www.linkedin.com/feed/update/urn:li:activity:6654500294791086080"
+              target="_blank"
+            >
               <div>
                 <img src={linkedin} alt="IN" />
+              </div>
+            </a>
+            <a
+              href=" fb.com/MedeirosSouzaTax"
+              target="_blank"
+            >
+              <div>
+                <img src={facebook} alt="FB" />
               </div>
             </a>
           </Social>
