@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { Wrapper } from "./styles";
 
-export default function AuthLayout({ children }) {
+export default function AdminLayout({ children }) {
   return (
     <Wrapper>
       {children}
@@ -12,6 +12,6 @@ export default function AuthLayout({ children }) {
   );
 }
 
-AuthLayout.propTypes = {
+AdminLayout.propTypes = {
   children: PropTypes.element.isRequired,
 };
