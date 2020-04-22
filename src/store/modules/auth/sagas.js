@@ -10,7 +10,7 @@ export function* signIn({ payload }) {
   try {
     const { email, password } = payload;
 
-    const response = yield call(api.post, "login/provider/", {
+    const response = yield call(api.post, "/auth/login", {
       email,
       password
     });
@@ -20,7 +20,7 @@ export function* signIn({ payload }) {
 
     yield put(signInSuccess(token, user));
 
-    window.location.href = "/";
+    window.location.href = "/admin";
   } catch (err) {
     toast.error("Authentication failed, check your data");
     yield put(signFailure());

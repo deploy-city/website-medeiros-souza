@@ -7,15 +7,19 @@ import Home from "../pages/Home";
 
 import DefaultLayout from "../pages/layouts/default";
 import AuthLayout from "../pages/layouts/auth";
+import Dashboard from "../pages/Dashboard";
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/login" exact auth component={SignIn} layout={AuthLayout} />
-      
+
       <Route path="/" exact component={Home} layout={DefaultLayout} />
 
-      <Route path="/" component={() => <h1>404</h1>} />
+      <Route path="/admin" isPrivate exact component={Dashboard} layout={DefaultLayout}/>
+
+
+      <Route path="/" component={() => <h1>404</h1>} layout={DefaultLayout} />
     </Switch>
   );
 }
