@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import api from "../../services/api";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -18,6 +18,7 @@ import { useForm } from "react-hook-form";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
+  const formRef = useRef(null);
 
   const { register, handleSubmit, errors } = useForm();
 
@@ -40,14 +41,17 @@ export default function Home() {
       text,
     };
 
-    await api.post("/send", body);
+    await api.post("/email", body);
+
     setLoading(false);
+
+    formRef.current.reset();
+
     return toast.success("Your contact request was sent succesfully");
   };
 
   return (
     <Container>
-
       <Carousel />
 
       <About id="about">
@@ -120,7 +124,7 @@ export default function Home() {
       <Contact id="contact">
         <img src={contact} alt="Contact" />
         <div>
-          <form onSubmit={handleSubmit(handleContactForm)}>
+          <form ref={formRef} onSubmit={handleSubmit(handleContactForm)}>
             <label htmlFor="name">YOUR NAME (REQUIRED): </label>
             <input
               ref={register({ required: true })}
