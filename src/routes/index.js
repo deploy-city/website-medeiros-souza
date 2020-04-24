@@ -5,7 +5,7 @@ import Route from "./Route";
 import SignIn from "../pages/SignIn";
 import Home from "../pages/Home";
 import Dashboard from "../pages/Admin/Dashboard";
-import News from "../pages/Admin/News";
+import News from "../pages/Admin/News/Index";
 
 import DefaultLayout from "../pages/layouts/default";
 import AuthLayout from "../pages/layouts/auth";

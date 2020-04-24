@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MdImage, MdDelete, MdEdit } from "react-icons/md";
 
-import AdminBox from "../../../components/AdminBox";
-import Checkbox from "../../../components/Checkbox";
-import api from "../../../services/api";
+import AdminBox from "../../../../components/AdminBox";
+import Checkbox from "../../../../components/Checkbox";
+import api, { baseURL } from "../../../../services/api";
 
 import { Container } from "./styles";
 import { Link } from "react-router-dom";
@@ -94,12 +94,16 @@ export default function News() {
                 </Checkbox>
               </td>
               <td>
-                <Link to="">
+                <a
+                  href={`${baseURL}/files/${image}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <MdImage size={30} color="#ffcc00" />
-                </Link>
+                </a>
               </td>
               <td>
-                <Link to="">
+                <Link to="/news/edit">
                   <MdEdit size={30} color="#009933" />
                 </Link>
               </td>

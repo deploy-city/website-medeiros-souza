@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { MdMail, MdLock } from "react-icons/md";
@@ -11,11 +11,14 @@ export default function SignIn() {
   const { register, handleSubmit } = useForm();
   const { signIn } = useAuth();
 
-  const handleLogin = ({ email, password }) => {
-    setLoading(true);
-    signIn({ email, password });
-    window.location.href = "/admin";
-  };
+  const handleLogin = useCallback(
+    async ({ email, password }) => {
+      setLoading(true);
+      await signIn({ email, password });
+      window.location.href = "/admin";
+    },
+    [signIn]
+  );
 
   return (
     <Container>

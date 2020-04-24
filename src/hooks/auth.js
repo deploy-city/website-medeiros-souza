@@ -21,6 +21,8 @@ export const AuthProvider = ({ children }) => {
       password,
     });
 
+    console.log(response.data);
+
     const { user, token } = response.data;
 
     localStorage.setItem("@medeirossouza:token", token);
