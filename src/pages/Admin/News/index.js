@@ -95,17 +95,17 @@ export default function News() {
               </td>
               <td>
                 <Link to="">
-                  <MdImage size={26} color="#ffcc00" />
+                  <MdImage size={30} color="#ffcc00" />
                 </Link>
               </td>
               <td>
                 <Link to="">
-                  <MdEdit size={26} color="#009933" />
+                  <MdEdit size={30} color="#009933" />
                 </Link>
               </td>
               <td>
                 <button onClick={() => handleDelete(id)}>
-                  <MdDelete size={26} color="#990000" />
+                  <MdDelete size={30} color="#990000" />
                 </button>
               </td>
             </tr>
