@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { MdMail, MdLock } from "react-icons/md";
 
-import { signInRequest } from "../../store/modules/auth/actions";
-
 import { Container } from "./styles";
+import { useAuth } from "../../hooks/auth";
 
 export default function SignIn() {
-  const dispatch = useDispatch();
-  const loading = useSelector((state) => state.auth.loading);
-  const { register, handleSubmit, errors } = useForm();
+  const [loading, setLoading] = useState(false);
+  const { register, handleSubmit } = useForm();
+  const { signIn } = useAuth();
 
-  const handleLogin = async ({ email, password }) => {
-    dispatch(signInRequest(email, password));
+  const handleLogin = ({ email, password }) => {
+    setLoading(true);
+    signIn({ email, password });
+    window.location.href = "/admin";
   };
 
   return (

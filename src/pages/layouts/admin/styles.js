@@ -13,8 +13,9 @@ export const Wrapper = styled.div`
 `;
 
 export const SideBar = styled.nav`
-  height: 100vh;
   width: 350px;
+  height: 100vh;
+  position: fixed;
   background: #000;
   display: flex;
   flex-direction: column;

@@ -4,13 +4,11 @@ import { lighten } from "polished";
 export const Container = styled.div`
   width: 65%;
   min-width: 400px;
+  margin: 60px 0 50px 450px;
   padding: 40px;
-
-  max-height: 650px;
+  overflow: hidden;
 
   background: #fff;
-
-  margin-top: 80px;
   border-top: 4px solid #181818;
   border-radius: 6px;
 `;

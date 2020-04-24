@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Route, Redirect } from "react-router-dom";
 
-import { store } from "../store";
+import { useAuth } from "../hooks/auth";
 export default function RouteWrapper({
   layout: Layout,
   component: Component,
@@ -10,14 +10,15 @@ export default function RouteWrapper({
   auth = false,
   ...rest
 }) {
-  const { signed } = store.getState().auth;
+  const Auth = useAuth();
+  const { signed } = Auth;
 
   if (!signed && isPrivate) {
     return <Redirect to="/login" />;
   }
 
   if (signed && auth) {
-    return <Redirect to="/dashboard" />;
+    return <Redirect to="/admin" />;
   }
 
   return (
