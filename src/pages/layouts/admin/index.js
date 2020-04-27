@@ -15,11 +15,11 @@ export default function AdminLayout({ children }) {
         <h2>Control Panel</h2>
         <ul>
           <li>
-            <Link to="/news">News</Link>
+            <Link to="/admin/news">News</Link>
           </li>
-          <li>
-            <Link to="/newsletter">Newsletter</Link>
-          </li>
+          {/* <li>
+            <Link to="/admin/newsletter">Newsletter</Link>
+          </li> */}
         </ul>
       </SideBar>
       {children}

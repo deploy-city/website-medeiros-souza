@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { MdMail, MdLock } from "react-icons/md";
 

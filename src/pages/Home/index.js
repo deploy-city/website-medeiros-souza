@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
-import api from "../../services/api";
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import api, { baseURL } from "../../services/api";
 import "react-toastify/dist/ReactToastify.min.css";
-
 import { toast } from "react-toastify";
+import { Carousel as CarouselPlugin } from "react-responsive-carousel";
+import { useForm } from "react-hook-form";
 
 import about from "../../assets/images/about.jpg";
 import services from "../../assets/images/services.png";
@@ -10,19 +11,33 @@ import consultoria from "../../assets/images/consultoria.jpg";
 import contabilidade from "../../assets/images/contabilidade.jpg";
 import imigracao from "../../assets/images/imigracao.jpg";
 import contact from "../../assets/images/contact.png";
-
-import { Container, About, Services, Contact } from "./styles";
-
+import newsTag from "../../assets/images/news.png";
 import Carousel from "../../components/Carousel";
-import { useForm } from "react-hook-form";
+
+import {
+  Container,
+  About,
+  Services,
+  Contact,
+  News,
+  CarouselDiv,
+} from "./styles";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
+  const [news, setNews] = useState([]);
+
+  useEffect(() => {
+    api.get("/news").then((response) => {
+      setNews(response.data);
+    });
+  }, []);
+
   const formRef = useRef(null);
 
   const { register, handleSubmit, errors } = useForm();
 
-  const handleContactForm = async (data) => {
+  const handleContactForm = useCallback(async (data) => {
     setLoading(true);
     const { name, email, subject, message: text } = data;
 
@@ -48,7 +63,7 @@ export default function Home() {
     formRef.current.reset();
 
     return toast.success("Your contact request was sent succesfully");
-  };
+  }, []);
 
   return (
     <Container>
@@ -121,6 +136,18 @@ export default function Home() {
           </li>
         </ul>
       </Services>
+      <News id="news">
+        <img src={newsTag} alt="News" />
+        <CarouselPlugin showThumbs={false} showStatus={false}>
+          {news.map(({ id, title, image }) => (
+            <CarouselDiv key={id}>
+              <div></div>
+              <img src={`${baseURL}/files/${image}`} alt="First" />
+              <h1>{title}</h1>
+            </CarouselDiv>
+          ))}
+        </CarouselPlugin>
+      </News>
       <Contact id="contact">
         <img src={contact} alt="Contact" />
         <div>

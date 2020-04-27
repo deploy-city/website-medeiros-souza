@@ -13,7 +13,8 @@ import FileList from "../../../../components/FileList";
 
 import { Container, ImportFileContainer } from "./styles";
 
-export default function Add() {
+export default function Edit(props) {
+  const [findNew, setNew] = useState({});
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const { handleSubmit, register, setValue } = useForm();
@@ -22,7 +23,22 @@ export default function Add() {
     register("text");
   }, [register]);
 
-  const handleAdd = useCallback(
+  useEffect(() => {
+    const { id } = props.match.params;
+    api.get(`/news/${id}`).then((response) => {
+      setNew(response.data);
+      setValue("text", response.data.text);
+    });
+  }, [props.match.params, setValue]);
+
+  const handleEditorChange = useCallback(
+    (_, editor) => {
+      setValue("text", editor.getData());
+    },
+    [setValue]
+  );
+
+  const handleUpdate = useCallback(
     async (data) => {
       try {
         const schema = Yup.object().shape({
@@ -32,46 +48,39 @@ export default function Add() {
 
         await schema.validate(data);
 
-        const { file } = uploadedFiles[0];
-
         const formData = new FormData();
 
-        formData.append("image", file);
+        if (uploadedFiles[0]) {
+          const { file } = uploadedFiles[0];
+          formData.append("image", file);
+        }
+
         formData.append("title", data.title);
         formData.append("text", data.text);
 
         const token = localStorage.getItem("@medeirossouza:token");
 
-        await api.post("/news", formData, {
+        await api.put(`/news/${findNew.id}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
 
-        toast.success("New added successfuly");
+        toast.success("New updated successfuly");
 
         setTimeout(() => {
           window.location.href = "/admin/news";
-        }, 1000);
+        }, 500);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           err.errors.forEach((error) => {
             toast.error(error);
           });
         }
-
-        console.log(err.message);
         toast.error("Error while saving the New, please check your data");
       }
     },
-    [uploadedFiles]
-  );
-
-  const handleEditorChange = useCallback(
-    (_, editor) => {
-      setValue("text", editor.getData());
-    },
-    [setValue]
+    [findNew.id, uploadedFiles]
   );
 
   const submitFile = useCallback((files) => {
@@ -91,23 +100,30 @@ export default function Add() {
   }, []);
 
   return (
-    <AdminBox title="Add New">
+    <AdminBox title="Edit New">
       <Container>
-        <form onSubmit={handleSubmit(handleAdd)}>
+        <form onSubmit={handleSubmit(handleUpdate)}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
             id="title"
             name="title"
             placeheolder="New's title"
+            defaultValue={findNew.title}
             ref={register({ required: true })}
           />
 
-          <span>New's Text</span>
-          <CKEditor editor={ClassicEditor} onChange={handleEditorChange} />
+          <span>New's text</span>
+          <CKEditor
+            editor={ClassicEditor}
+            data={findNew.text}
+            onChange={handleEditorChange}
+          />
 
           <ImportFileContainer>
-            <label>Now set the New's image</label>
+            <label>
+              Upload an image only if you want to change the current one!
+            </label>
             <FileInput onUpload={submitFile} />
             {!!uploadedFiles.length && <FileList files={uploadedFiles} />}
           </ImportFileContainer>

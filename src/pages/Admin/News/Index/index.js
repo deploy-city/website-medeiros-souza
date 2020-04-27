@@ -20,15 +20,27 @@ export default function News() {
     });
   }, []);
 
-  const handleDelete = useCallback(async (id) => {
-    try {
-      api.delete(`/news/${id}`);
+  const handleDelete = useCallback(
+    async (id) => {
+      try {
+        const token = localStorage.getItem("@medeirossouza:token");
 
-      toast.done("New deleted");
-    } catch {
-      toast.error("An error has ocurred, please try again");
-    }
-  }, []);
+        await api.delete(`/news/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const newsCopy = news.filter((filteredNew) => filteredNew.id !== id);
+        setNews([...newsCopy]);
+
+        toast.success("New deleted");
+      } catch {
+        toast.error("An error has ocurred, please try again");
+      }
+    },
+    [news]
+  );
 
   const handleActivate = useCallback(
     async (id) => {
@@ -103,7 +115,7 @@ export default function News() {
                 </a>
               </td>
               <td>
-                <Link to="/news/edit">
+                <Link to={`/admin/news/edit/${id}`}>
                   <MdEdit size={30} color="#009933" />
                 </Link>
               </td>

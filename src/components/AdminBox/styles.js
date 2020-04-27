@@ -4,7 +4,7 @@ import { lighten } from "polished";
 export const Container = styled.div`
   width: 65%;
   min-width: 400px;
-  margin: 60px 0 50px 450px;
+  margin: 40px 0 20px 450px;
   padding: 40px;
   overflow: hidden;
 
@@ -20,7 +20,7 @@ export const Header = styled.header`
   h1 {
     color: #181818;
     border-bottom: 4px solid #181818;
-    width: 100px;
+    width: 150px;
     padding-bottom: 10px;
   }
 

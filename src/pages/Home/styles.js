@@ -49,7 +49,7 @@ export const Services = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 20px 0;
+  padding: 20px 0 40px;
 
   img {
     width: 300px;
@@ -69,6 +69,12 @@ export const Services = styled.div`
 
     li {
       position: relative;
+
+      @media (max-width: 768px) {
+        & + li {
+          margin-top: 30px;
+        }
+      }
 
       div {
         height: 400px;
@@ -99,7 +105,7 @@ export const Services = styled.div`
 export const Contact = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   background: url(${contact});
   height: 800px;
@@ -165,5 +171,42 @@ export const Contact = styled.div`
         }
       }
     }
+  }
+`;
+
+export const News = styled.div`
+  position: relative;
+
+  & > img {
+    width: 300px;
+    left: 0;
+    position: absolute;
+    z-index: 3;
+  }
+`;
+
+export const CarouselDiv = styled.div`
+  position: relative;
+
+  div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #000, transparent);
+  }
+
+  img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h1 {
+    position: absolute;
+    left: 100px;
+    bottom: 200px;
+    color: #fff;
+    font-size: 42px;
+    max-width: 80%;
   }
 `;
