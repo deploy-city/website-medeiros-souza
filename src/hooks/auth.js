@@ -1,5 +1,7 @@
 import React, { createContext, useCallback, useState, useContext } from "react";
+
 import api from "../services/api";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext({});
 
@@ -16,19 +18,52 @@ export const AuthProvider = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post("/auth/login", {
-      email,
-      password,
-    });
+    try {
+      const response = await api.post("/auth/login", {
+        email,
+        password,
+      });
 
-    console.log(response.data);
+      const { user, token } = response.data;
 
-    const { user, token } = response.data;
+      localStorage.setItem("@medeirossouza:token", token);
+      localStorage.setItem("@medeirossouza:user", JSON.stringify(user));
 
-    localStorage.setItem("@medeirossouza:token", token);
-    localStorage.setItem("@medeirossouza:user", JSON.stringify(user));
+      api.interceptors.request.use((config) => {
+        config.headers["Authorization"] = `Bearer ${token}`;
+        return config;
+      });
 
-    setData({ user, token, signed: true });
+      api.interceptors.response.use(
+        (response) => {
+          return response;
+        },
+        async function (error) {
+          const originalRequest = error.config;
+          if (error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+            return api.get("/auth/refresh").then((response) => {
+              if (response.status === 201) {
+                // 1) put token to LocalStorage
+                localStorage.setItem(response.data.token);
+
+                // 2) Change Authorization header
+                api.defaults.headers.common[
+                  "Authorization"
+                ] = `Bearer ${response.data.token}`;
+
+                // 3) return originalRequest object with Axios.
+                return api(originalRequest);
+              }
+            });
+          }
+        }
+      );
+
+      setData({ user, token, signed: true });
+    } catch (err) {
+      toast.error("Something went wrong, please try again");
+    }
   }, []);
 
   const signOut = useCallback(() => {

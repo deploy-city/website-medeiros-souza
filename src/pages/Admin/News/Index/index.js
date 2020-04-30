@@ -47,9 +47,10 @@ export default function News() {
       try {
         const index = news.findIndex((findNew) => findNew.id === id);
         const status = !news[index].active;
+        console.log(status);
         const token = localStorage.getItem("@medeirossouza:token");
         const { data } = api.patch(
-          `/news/active/${id}`,
+          `/news/${id}/active`,
           {
             status,
           },
@@ -107,7 +108,7 @@ export default function News() {
               </td>
               <td>
                 <a
-                  href={`${baseURL}/files/${image}`}
+                  href={`${baseURL}/storage/news/${image}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

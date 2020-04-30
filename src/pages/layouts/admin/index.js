@@ -1,12 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { MdExitToApp } from "react-icons/md";
 
 import logo from "../../../assets/images/logo.png";
+import { useAuth } from "../../../hooks/auth";
 
 import { Wrapper, SideBar } from "./styles";
 
 export default function AdminLayout({ children }) {
+  const { signOut } = useAuth();
+
   return (
     <Wrapper>
       <SideBar>
@@ -20,6 +24,12 @@ export default function AdminLayout({ children }) {
           {/* <li>
             <Link to="/admin/newsletter">Newsletter</Link>
           </li> */}
+          <li>
+            <button onClick={signOut}>
+              <MdExitToApp />
+              Sign out
+            </button>
+          </li>
         </ul>
       </SideBar>
       {children}

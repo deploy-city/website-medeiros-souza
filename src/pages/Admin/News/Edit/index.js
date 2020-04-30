@@ -4,7 +4,7 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import api from "../../../../services/api";
 import AdminBox from "../../../../components/AdminBox";
@@ -18,6 +18,7 @@ export default function Edit(props) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const { handleSubmit, register, setValue } = useForm();
+  const { push } = useHistory();
 
   useEffect(() => {
     register("text");
@@ -69,7 +70,7 @@ export default function Edit(props) {
         toast.success("New updated successfuly");
 
         setTimeout(() => {
-          window.location.href = "/admin/news";
+          push("/admin/news");
         }, 500);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -80,7 +81,7 @@ export default function Edit(props) {
         toast.error("Error while saving the New, please check your data");
       }
     },
-    [findNew.id, uploadedFiles]
+    [findNew.id, push, uploadedFiles]
   );
 
   const submitFile = useCallback((files) => {

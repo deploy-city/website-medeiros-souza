@@ -50,19 +50,24 @@ export default function Home() {
     }
 
     const body = {
-      to: ["dev5@cityconnect.com.br"],
-      from: `${name} <${email}>`,
+      name,
+      from: email,
       subject,
       text,
     };
 
-    await api.post("/email", body);
+    try {
+      await api.post("/email", body);
 
-    setLoading(false);
+      setLoading(false);
 
-    formRef.current.reset();
+      formRef.current.reset();
 
-    return toast.success("Your contact request was sent succesfully");
+      return toast.success("Your contact request was sent succesfully");
+    } catch (err) {
+      toast.error(`Something went wrong`);
+      setLoading(false);
+    }
   }, []);
 
   return (
@@ -142,7 +147,7 @@ export default function Home() {
           {news.map(({ id, title, image }) => (
             <CarouselDiv key={id}>
               <div></div>
-              <img src={`${baseURL}/files/${image}`} alt="First" />
+              <img src={`${baseURL}/storage/news/${image}`} alt="First" />
               <h1>{title}</h1>
             </CarouselDiv>
           ))}

@@ -64,6 +64,22 @@ export const SideBar = styled.nav`
         font-size: 24px;
         font-weight: bold;
       }
+
+      button {
+        background: none;
+        color: #fff;
+        font-weight: bold;
+        font-size: 24px;
+        border: 0;
+        display: flex;
+        align-items: center;
+
+        svg {
+          transform: rotate(180deg);
+          margin-right: 20px;
+          color: red;
+        }
+      }
     }
   }
 `;

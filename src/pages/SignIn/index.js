@@ -14,7 +14,6 @@ export default function SignIn() {
     async ({ email, password }) => {
       setLoading(true);
       await signIn({ email, password });
-      window.location.href = "/admin";
     },
     [signIn]
   );

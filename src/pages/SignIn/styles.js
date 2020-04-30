@@ -27,6 +27,7 @@ export const Container = styled.div`
 
     form {
       div {
+        display: flex;
         position: relative;
         background: rgba(0, 0, 0, 0.1);
         margin-bottom: 15px;
@@ -36,6 +37,7 @@ export const Container = styled.div`
         border-radius: 4px;
 
         input {
+          width: 80%;
           background: transparent;
           border: 0;
           position: absolute;
