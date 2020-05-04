@@ -45,33 +45,9 @@ export const AuthProvider = ({ children }) => {
         return response;
       },
       async function (error) {
-        const originalRequest = error.config;
-        if (error.response.status === 401 && !originalRequest._retry) {
-          originalRequest._retry = true;
-          return api
-            .get("/auth/refresh")
-            .catch((error) => {
-              localStorage.removeItem("@medeirossouza:token");
-              localStorage.removeItem("@medeirossouza:user");
-              window.location = "/login";
-            })
-            .then((response) => {
-              if (response.status === 201) {
-                // 1) put token to LocalStorage
-                localStorage.setItem(
-                  "@medeirossouza:token",
-                  response.data.token
-                );
-
-                // 2) Change Authorization header
-                api.defaults.headers.common[
-                  "Authorization"
-                ] = `Bearer ${response.data.token}`;
-
-                // 3) return originalRequest object with Axios.
-                return api(originalRequest);
-              }
-            });
+        if (error.response.status === 401) {
+          localStorage.removeItem("@medeirossouza:token");
+          localStorage.removeItem("@medeirossouza:user");
         }
       }
     );
