@@ -108,7 +108,7 @@ export default function News() {
               </td>
               <td>
                 <a
-                  href={`${baseURL}/storage/news/${image}`}
+                  href={`http://api.medeirossouza.com/storage/news/${image}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -15,6 +15,7 @@ import { Container, ImportFileContainer } from "./styles";
 
 export default function Add() {
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { handleSubmit, register, setValue } = useForm();
   const { push } = useHistory();
@@ -26,6 +27,7 @@ export default function Add() {
   const handleAdd = useCallback(
     async (data) => {
       try {
+        setLoading(true);
         const schema = Yup.object().shape({
           title: Yup.string().required("The New's title is required"),
           text: Yup.string().required("The New's text is required"),
@@ -50,11 +52,13 @@ export default function Add() {
         });
 
         toast.success("New added successfuly");
-
+        setLoading(false);
         setTimeout(() => {
           push("/admin/news");
         }, 1000);
       } catch (err) {
+        setLoading(false);
+
         if (err instanceof Yup.ValidationError) {
           err.errors.forEach((error) => {
             toast.error(error);
@@ -97,6 +101,7 @@ export default function Add() {
         <form onSubmit={handleSubmit(handleAdd)}>
           <label htmlFor="title">Title</label>
           <input
+            readOnly={loading}
             type="text"
             id="title"
             name="title"
@@ -113,8 +118,12 @@ export default function Add() {
             {!!uploadedFiles.length && <FileList files={uploadedFiles} />}
           </ImportFileContainer>
 
-          <button type="submit">SAVE</button>
-          <Link to="/admin/news">CANCEL</Link>
+          <button disabled={loading} type="submit">
+            {loading ? "SENDING..." : "SAVE"}
+          </button>
+          <Link disabled={loading} to="/admin/news">
+            CANCEL
+          </Link>
         </form>
       </Container>
     </AdminBox>

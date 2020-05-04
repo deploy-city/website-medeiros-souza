@@ -11,24 +11,6 @@ export const AuthProvider = ({ children }) => {
     const user = localStorage.getItem("@medeirossouza:user");
 
     if (token && user) {
-      return { token, user: JSON.parse(user), signed: true };
-    }
-
-    return {};
-  });
-
-  const signIn = useCallback(async ({ email, password }) => {
-    try {
-      const response = await api.post("/auth/login", {
-        email,
-        password,
-      });
-
-      const { user, token } = response.data;
-
-      localStorage.setItem("@medeirossouza:token", token);
-      localStorage.setItem("@medeirossouza:user", JSON.stringify(user));
-
       api.interceptors.request.use((config) => {
         config.headers["Authorization"] = `Bearer ${token}`;
         return config;
@@ -39,13 +21,47 @@ export const AuthProvider = ({ children }) => {
           return response;
         },
         async function (error) {
-          const originalRequest = error.config;
-          if (error.response.status === 401 && !originalRequest._retry) {
-            originalRequest._retry = true;
-            return api.get("/auth/refresh").then((response) => {
+          if (error.response.status === 401) {
+            localStorage.removeItem("@medeirossouza:token");
+            localStorage.removeItem("@medeirossouza:user");
+          }
+        }
+      );
+
+      return { token, user: JSON.parse(user), signed: true };
+    }
+
+    return {};
+  });
+
+  const handleAuthInterceptors = useCallback((token) => {
+    api.interceptors.request.use((config) => {
+      config.headers["Authorization"] = `Bearer ${token}`;
+      return config;
+    });
+
+    api.interceptors.response.use(
+      (response) => {
+        return response;
+      },
+      async function (error) {
+        const originalRequest = error.config;
+        if (error.response.status === 401 && !originalRequest._retry) {
+          originalRequest._retry = true;
+          return api
+            .get("/auth/refresh")
+            .catch((error) => {
+              localStorage.removeItem("@medeirossouza:token");
+              localStorage.removeItem("@medeirossouza:user");
+              window.location = "/login";
+            })
+            .then((response) => {
               if (response.status === 201) {
                 // 1) put token to LocalStorage
-                localStorage.setItem(response.data.token);
+                localStorage.setItem(
+                  "@medeirossouza:token",
+                  response.data.token
+                );
 
                 // 2) Change Authorization header
                 api.defaults.headers.common[
@@ -56,15 +72,33 @@ export const AuthProvider = ({ children }) => {
                 return api(originalRequest);
               }
             });
-          }
         }
-      );
-
-      setData({ user, token, signed: true });
-    } catch (err) {
-      toast.error("Something went wrong, please try again");
-    }
+      }
+    );
   }, []);
+
+  const signIn = useCallback(
+    async ({ email, password }) => {
+      try {
+        const response = await api.post("/auth/login", {
+          email,
+          password,
+        });
+
+        const { user, token } = response.data;
+
+        localStorage.setItem("@medeirossouza:token", token);
+        localStorage.setItem("@medeirossouza:user", JSON.stringify(user));
+
+        handleAuthInterceptors(token);
+
+        setData({ user, token, signed: true });
+      } catch (err) {
+        toast.error("Something went wrong, please try again");
+      }
+    },
+    [handleAuthInterceptors]
+  );
 
   const signOut = useCallback(() => {
     localStorage.removeItem("@medeirossouza:token");

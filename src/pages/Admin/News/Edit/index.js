@@ -58,10 +58,13 @@ export default function Edit(props) {
 
         formData.append("title", data.title);
         formData.append("text", data.text);
+        formData.append("_method", "put");
+
+        console.log(data);
 
         const token = localStorage.getItem("@medeirossouza:token");
 
-        await api.put(`/news/${findNew.id}`, formData, {
+        await api.post(`/news/${findNew.id}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
