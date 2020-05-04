@@ -147,7 +147,7 @@ export default function Home() {
           {news.map(({ id, title, image }) => (
             <CarouselDiv key={id}>
               <div></div>
-              <img src={`${baseURL}/storage/news/${image}`} alt="First" />
+              <img src={`http://api.medeirossouza.com/storage/news/${image}`} alt="First" />
               <h1>{title}</h1>
             </CarouselDiv>
           ))}
