@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import api, { baseURL } from "../../services/api";
+import api, { storageUrl } from "../../services/api";
 import "react-toastify/dist/ReactToastify.min.css";
 import { toast } from "react-toastify";
 import { Carousel as CarouselPlugin } from "react-responsive-carousel";
@@ -152,9 +152,10 @@ export default function Home() {
             {news.map(({ id, title, image, text }) => (
               <CarouselDiv key={id}>
                 <div></div>
-                <img src={`http://api.medeirossouza.com/storage/news/${image}`} alt="First" />
+                <img src={`${storageUrl}/${image}`} alt="First" />
                 <h1>{title}</h1>
-                <pre>{text}</pre>
+                <pre dangerouslySetInnerHTML={{ __html: text}}>
+                </pre>
               </CarouselDiv>
             ))}
           </CarouselPlugin>
