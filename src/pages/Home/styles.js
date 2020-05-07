@@ -102,6 +102,54 @@ export const Services = styled.div`
   }
 `;
 
+export const News = styled.div`
+  position: relative;
+
+  & > img {
+    width: 300px;
+    left: 0;
+    position: absolute;
+    z-index: 3;
+  }
+`;
+
+export const CarouselDiv = styled.div`
+  position: relative;
+
+  div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #000, transparent);
+  }
+
+  img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  h1 {
+    position: absolute;
+    left: 100px;
+    bottom: 200px;
+    color: #fff;
+    font-size: 42px;
+    max-width: 80%;
+  }
+
+  pre {
+    position: absolute;
+    left: 100px;
+    bottom: 150px;
+    color: #dedede;
+    font-size: 32px;
+    max-width: 80%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  }
+`;
+
 export const Contact = styled.div`
   display: flex;
   flex-direction: column;
@@ -117,12 +165,14 @@ export const Contact = styled.div`
   div {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 20px;
 
     form {
       display: flex;
       flex-direction: column;
-      width: 60%;
+      width: 700px;
 
       label {
         margin-bottom: 10px;
@@ -174,39 +224,11 @@ export const Contact = styled.div`
   }
 `;
 
-export const News = styled.div`
+export const MapsContainer = styled.div`
+  margin: 20px 0 0 100px;
+  height: 550px !important;
+  width: 650px !important;
+  border-radius: 4px;
+  overflow-x: hidden;
   position: relative;
-
-  & > img {
-    width: 300px;
-    left: 0;
-    position: absolute;
-    z-index: 3;
-  }
-`;
-
-export const CarouselDiv = styled.div`
-  position: relative;
-
-  div {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, #000, transparent);
-  }
-
-  img {
-    height: 600px;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  h1 {
-    position: absolute;
-    left: 100px;
-    bottom: 200px;
-    color: #fff;
-    font-size: 42px;
-    max-width: 80%;
-  }
 `;

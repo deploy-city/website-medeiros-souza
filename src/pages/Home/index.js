@@ -12,6 +12,7 @@ import contabilidade from "../../assets/images/contabilidade.jpg";
 import imigracao from "../../assets/images/imigracao.jpg";
 import contact from "../../assets/images/contact.png";
 import newsTag from "../../assets/images/news.png";
+
 import Carousel from "../../components/Carousel";
 
 import {
@@ -21,7 +22,9 @@ import {
   Contact,
   News,
   CarouselDiv,
+  MapsContainer,
 } from "./styles";
+import Maps from "./Maps";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -141,18 +144,23 @@ export default function Home() {
           </li>
         </ul>
       </Services>
-      <News id="news">
-        <img src={newsTag} alt="News" />
-        <CarouselPlugin showThumbs={false} showStatus={false}>
-          {news.map(({ id, title, image }) => (
-            <CarouselDiv key={id}>
-              <div></div>
-              <img src={`${baseURL}/storage/news/${image}`} alt="First" />
-              <h1>{title}</h1>
-            </CarouselDiv>
-          ))}
-        </CarouselPlugin>
-      </News>
+
+      {news && (
+        <News id="news">
+          <img src={newsTag} alt="News" />
+          <CarouselPlugin showThumbs={false} showStatus={false}>
+            {news.map(({ id, title, image, text }) => (
+              <CarouselDiv key={id}>
+                <div></div>
+                <img src={`${baseURL}/storage/news/${image}`} alt="First" />
+                <h1>{title}</h1>
+                <pre>{text}</pre>
+              </CarouselDiv>
+            ))}
+          </CarouselPlugin>
+        </News>
+      )}
+
       <Contact id="contact">
         <img src={contact} alt="Contact" />
         <div>
@@ -186,6 +194,14 @@ export default function Home() {
               {loading ? "SENDING..." : "SUBMIT"}
             </button>
           </form>
+
+          <MapsContainer>
+            <Maps
+              lat={-22.5180515}
+              lon={-44.1022595}
+              place="City Connect - Soluções em Tecnologia"
+            />
+          </MapsContainer>
         </div>
       </Contact>
     </Container>
