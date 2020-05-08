@@ -86,42 +86,6 @@ export default function Home() {
             based in the heart of Orlando, FL, providing services nationwide. We
             do not outsource any of our tax and accounting services.
           </p>
-
-          <ul>
-            <li>
-              <strong>BUSINESS CONSULTING: </strong> Let our team help you
-              structure your business here in the USA. Through services as
-              market research, robust business plan and advice on obtaining
-              licenses, we will help you to enter the American market.
-            </li>
-            <li>
-              <strong>INVESTMENT &amp; MANAGEMENT: </strong>
-              Our team of specialists will guide you to find the best investment
-              opportunities based on your profile and help you in all stages of
-              management.
-            </li>
-            <li>
-              <strong>INCORPORATING COMPANIES: </strong>
-              We do business incorporation processes and help you identify the
-              best category of the company for you. One of the first tasks
-              you’ll face is entity selection. There are a number of ways in
-              which to incorporate, and each has distinct advantages and
-              disadvantages. will work with you to choose the entity that’s
-              right for your practice as well as the best state in which to
-              incorporate to take advantage of tax laws and other incentives.
-            </li>
-            <li>
-              <strong>INTERNATIONAL TAX: </strong>
-              Our international client base is spread over 25 countries, with a
-              mix of individual and corporate ownership in US-based investment.
-              Medeiros Souza is well equipped to handle even the most complex
-              filings to federal and state authorities. Our team of experienced,
-              committed professionals and our substantial investment in
-              technology provide for excellent service and communication, deep
-              expertise, and an environment our clients and associates want to
-              be a part of.
-            </li>
-          </ul>
         </div>
       </About>
       <Services id="services">
