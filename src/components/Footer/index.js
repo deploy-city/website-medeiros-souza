@@ -45,7 +45,7 @@ export default function Footer() {
           <h2>FOLLOW US</h2>
 
           <Social>
-            <a href="Instagram.com/MedeirosSouzaTax" target="_blank">
+            <a href="http://instagram.com/MedeirosSouzaTax" target="_blank">
               <div>
                 <img src={instagram} alt="IG" />
               </div>
@@ -59,7 +59,7 @@ export default function Footer() {
               </div>
             </a>
             <a
-              href=" fb.com/MedeirosSouzaTax"
+              href="http://fb.com/MedeirosSouzaTax"
               target="_blank"
             >
               <div>
