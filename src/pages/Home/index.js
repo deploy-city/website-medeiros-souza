@@ -82,37 +82,45 @@ export default function Home() {
 
         <div>
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-            eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-            qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-            sed quia non numquam eius modi tempora incidunt ut labore et dolore
-            magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-            aliquid ex ea commodi consequatur? Quis autem vel eum iure
-            reprehenderit qui in ea voluptate velit esse quam nihil molestiae
-            consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla
-            pariatur?
-          </p>
-
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            <strong>MEDEIROS SOUZA Corp</strong> is a tax and accounting firm
+            based in the heart of Orlando, FL, providing services nationwide. We
+            do not outsource any of our tax and accounting services.
           </p>
 
           <ul>
-            <li>- Lorem ipsum </li>
-            <li>- Dolor sit amet</li>
-            <li>- Consectetur adipiscing </li>
-            <li>- Sed do eiusmod</li>
+            <li>
+              <strong>BUSINESS CONSULTING: </strong> Let our team help you
+              structure your business here in the USA. Through services as
+              market research, robust business plan and advice on obtaining
+              licenses, we will help you to enter the American market.
+            </li>
+            <li>
+              <strong>INVESTMENT &amp; MANAGEMENT: </strong>
+              Our team of specialists will guide you to find the best investment
+              opportunities based on your profile and help you in all stages of
+              management.
+            </li>
+            <li>
+              <strong>INCORPORATING COMPANIES: </strong>
+              We do business incorporation processes and help you identify the
+              best category of the company for you. One of the first tasks
+              you’ll face is entity selection. There are a number of ways in
+              which to incorporate, and each has distinct advantages and
+              disadvantages. will work with you to choose the entity that’s
+              right for your practice as well as the best state in which to
+              incorporate to take advantage of tax laws and other incentives.
+            </li>
+            <li>
+              <strong>INTERNATIONAL TAX: </strong>
+              Our international client base is spread over 25 countries, with a
+              mix of individual and corporate ownership in US-based investment.
+              Medeiros Souza is well equipped to handle even the most complex
+              filings to federal and state authorities. Our team of experienced,
+              committed professionals and our substantial investment in
+              technology provide for excellent service and communication, deep
+              expertise, and an environment our clients and associates want to
+              be a part of.
+            </li>
           </ul>
         </div>
       </About>
@@ -154,8 +162,7 @@ export default function Home() {
                 <div></div>
                 <img src={`${storageUrl}/${image}`} alt="First" />
                 <h1>{title}</h1>
-                <pre dangerouslySetInnerHTML={{ __html: text}}>
-                </pre>
+                <pre dangerouslySetInnerHTML={{ __html: text }}></pre>
               </CarouselDiv>
             ))}
           </CarouselPlugin>
@@ -198,8 +205,8 @@ export default function Home() {
 
           <MapsContainer>
             <Maps
-              lat={-22.5180515}
-              lon={-44.1022595}
+              lat={28.5564063}
+              lon={-81.380787}
               place="City Connect - Soluções em Tecnologia"
             />
           </MapsContainer>

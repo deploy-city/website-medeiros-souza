@@ -35,11 +35,22 @@ export const About = styled.div`
 
     p {
       margin-bottom: 20px;
+      font-size: 22px;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      margin-top: 30px;
+
+      li {
+        font-size: 18px;
+        color: #404040;
+
+        & + li {
+          margin-top: 20px;
+        }
+      }
     }
   }
 `;
