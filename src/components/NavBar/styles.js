@@ -20,9 +20,9 @@ export const Container = styled.div`
   height: 100px;
   background: linear-gradient(
     to bottom,
-    rgb(0, 0, 0),
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.0)
+    rgb(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.4),
+    transparent
   );
   display: flex;
   justify-content: space-between;
@@ -65,10 +65,13 @@ export const Container = styled.div`
           margin: 20px 0 0 0;
         }
 
-        a {
+        button {
           color: #fff;
           font-weight: bold;
+          font-size: 18px;
           text-decoration: none;
+          border: 0;
+          background: transparent;
         }
       }
     }

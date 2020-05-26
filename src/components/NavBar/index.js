@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 import logo from "../../assets/images/logo.png";
 
@@ -8,6 +8,12 @@ import { Button, Container } from "./styles";
 
 export default function NavBar() {
   const [openOnMobile, setOpenOnMobile] = useState(false);
+
+  const handleScroll = useCallback((id) => {
+    document.getElementById(id).scrollIntoView({
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <>
@@ -21,16 +27,16 @@ export default function NavBar() {
 
         <ul>
           <li>
-            <a href="#home">Home</a>
+            <button onClick={() => handleScroll("home")}>Home</button>
           </li>
           <li>
-            <a href="#about">About</a>
+            <button onClick={() => handleScroll("about")}>About</button>
           </li>
           <li>
-            <a href="#services">Services</a>
+            <button onClick={() => handleScroll("services")}>Services</button>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <button onClick={() => handleScroll("contact")}>Contact</button>
           </li>
           <li>
             <MdPublic size={30} color="#fff" />
