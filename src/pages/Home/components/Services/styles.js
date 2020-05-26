@@ -7,11 +7,6 @@ export const Container = styled.div`
   align-items: flex-end;
   padding: 20px 0 40px;
 
-  img {
-    width: 300px;
-    margin-bottom: 50px;
-  }
-
   ul {
     width: 100%;
     display: flex;

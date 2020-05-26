@@ -1,7 +1,7 @@
 import React from "react";
 import { MdArrowForward } from "react-icons/md";
 
-import clients from "../../../../assets/images/clients.png";
+import SideTag from "../../../../components/SideTag";
 
 import dayOne from "../../../../assets/images/clients/day1.jpg";
 import rps from "../../../../assets/images/clients/rps.jpg";
@@ -13,7 +13,9 @@ import { Container } from "./styles";
 function Clients() {
   return (
     <Container>
-      <img src={clients} alt="Clients" />
+      <SideTag side="right">
+        <strong>PARTNERS</strong>
+      </SideTag>
       <ul>
         <li>
           <div>

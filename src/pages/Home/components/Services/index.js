@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 
-import services from "../../../../assets/images/services.png";
+import SideTag from '../../../../components/SideTag'
+
 import consultoria from "../../../../assets/images/consultoria.jpg";
 import contabilidade from "../../../../assets/images/contabilidade.jpg";
 import imigracao from "../../../../assets/images/imigracao.jpg";
@@ -80,7 +81,9 @@ function Services() {
 
   return (
     <Container id="services">
-      <img src={services} alt="Services" />
+      <SideTag side="right">
+        <strong>SERVICES</strong>
+      </SideTag>
 
       <ul>
         <li>

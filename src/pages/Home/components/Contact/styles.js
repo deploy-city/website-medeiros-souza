@@ -9,6 +9,7 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: center;
   background: url(${contact});
+  background-size: cover;
   height: 800px;
   padding-bottom: 50px;
 

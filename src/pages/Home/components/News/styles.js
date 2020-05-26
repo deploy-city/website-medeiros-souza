@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
 
-  & > img {
-    width: 300px;
+  & > div.side-tag {
     left: 0;
+    top: 20px;
     position: absolute;
     z-index: 3;
   }

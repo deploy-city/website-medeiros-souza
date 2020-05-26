@@ -3,8 +3,9 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
+import SideTag from "../../../../components/SideTag";
+
 import api from "../../../../services/api";
-import contact from "../../../../assets/images/contact.png";
 
 import Maps from "./Maps";
 import { Container, MapsContainer } from "./styles";
@@ -51,7 +52,9 @@ function Contact() {
 
   return (
     <Container id="contact">
-      <img src={contact} alt="Contact" />
+      <SideTag side="left">
+        <strong>CONTACT</strong>
+      </SideTag>
       <div>
         <form ref={formRef} onSubmit={handleSubmit(handleContactForm)}>
           <label htmlFor="name">YOUR NAME (REQUIRED): </label>

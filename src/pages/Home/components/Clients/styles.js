@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { shade } from "polished";
 
 export const Container = styled.div`
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
 
-  padding-bottom: 50px;
+  padding: 50px 0;
 
   -webkit-box-shadow: inset 0px 0px 32px -4px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: inset 0px 0px 32px -4px rgba(0, 0, 0, 0.75);

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Carousel as CarouselPlugin } from "react-responsive-carousel";
+
 import api, { storageUrl } from "../../../../services/api";
 import newsTag from "../../../../assets/images/news.png";
+
+import SideTag from "../../../../components/SideTag";
 
 import { Container, CarouselDiv } from "./styles";
 
@@ -18,7 +21,9 @@ function News() {
     <Container id="news">
       {news && (
         <>
-          <img src={newsTag} alt="News" />
+          <SideTag side="left">
+            <strong>NEWS</strong>
+          </SideTag>
           <CarouselPlugin showThumbs={false} showStatus={false}>
             {news.map(({ id, title, image, text }) => (
               <CarouselDiv key={id}>
