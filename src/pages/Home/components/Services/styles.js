@@ -55,6 +55,7 @@ export const Container = styled.div`
             color: #fff;
             font-size: 22px;
             font-weight: bold;
+            max-width: 150px;
           }
         }
       }

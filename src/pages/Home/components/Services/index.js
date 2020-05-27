@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
-import SideTag from '../../../../components/SideTag'
+import SideTag from "../../../../components/SideTag";
 
 import consultoria from "../../../../assets/images/consultoria.jpg";
 import contabilidade from "../../../../assets/images/contabilidade.jpg";
@@ -17,61 +18,42 @@ function Services() {
   const [modalHeader, setModalHeader] = useState(null);
   const [modalText, setModalText] = useState(null);
 
-  const handleModal = useCallback((service) => {
-    switch (service) {
-      case "tax":
-        setModalHeader("International Tax");
+  const { t } = useTranslation();
 
-        setModalText(`
-            Our international client base is spread over 25 countries, with a mix 
-            of individual and corporate ownership in US-based investment. Medeiros 
-            Souza is well equipped to handle even the most complex filings to 
-            federal and state authorities. Our team of experienced, committed 
-            professionals and our substantial investment in technology provide for
-            excellent service and communication, deep expertise, and an environment
-            our clients and associates want to be a part of.
-        `);
-        break;
+  const handleModal = useCallback(
+    (service) => {
+      switch (service) {
+        case "tax":
+          setModalHeader(t("International Tax"));
 
-      case "business":
-        setModalHeader("Business Consulting");
+          setModalText(t("InternationalTaxesText"));
+          break;
 
-        setModalText(`
-          Let our team help you structure your business here in the USA. Through 
-          services as market research, robust business plan and advice on obtaining
-          licenses, we will help you to enter the American market.
-        `);
-        break;
+        case "business":
+          setModalHeader(t("Business Consulting"));
 
-      case "incorporating":
-        setModalHeader("Incorporating Companies");
+          setModalText(t("BusinessConsultingText"));
+          break;
 
-        setModalText(`
-          We do business incorporation processes and help you identify the best 
-          category of the company for you. One of the first tasks you’ll face is
-          entity selection. There are a number of ways in which to incorporate, 
-          and each has distinct advantages and disadvantages. will work with you 
-          to choose the entity that’s right for your practice as well as the best 
-          state in which to incorporate to take advantage of tax laws and other 
-          incentives.
-        `);
-        break;
+        case "incorporating":
+          setModalHeader(t("Business Incorporation"));
 
-      case "investment":
-        setModalHeader("Investment & Management");
+          setModalText(t("BusinessIncorporationText"));
+          break;
 
-        setModalText(`
-          Our team of specialists will guide you to find the best 
-          investment opportunities based on your profile and help you in all 
-          stages of management.
-        `);
-        break;
+        case "investment":
+          setModalHeader(t("Investment and Management"));
 
-      default:
-    }
+          setModalText(t("InvestmentAndManagementText"));
+          break;
 
-    setIsOpen(true);
-  }, []);
+        default:
+      }
+
+      setIsOpen(true);
+    },
+    [t]
+  );
 
   const handleCloseModal = useCallback(() => {
     setIsOpen(false);
@@ -82,7 +64,7 @@ function Services() {
   return (
     <Container id="services">
       <SideTag side="right">
-        <strong>SERVICES</strong>
+        <strong>{t("Services")}</strong>
       </SideTag>
 
       <ul>
@@ -90,9 +72,7 @@ function Services() {
           <button onClick={() => handleModal("business")}>
             <div>
               <img src={consultoria} alt="Consultoria" />
-              <span>
-                Business <br /> Consulting
-              </span>
+              <span>{t("Business Consulting")}</span>
             </div>
           </button>
         </li>
@@ -100,7 +80,7 @@ function Services() {
           <button onClick={() => handleModal("tax")}>
             <div>
               <img src={contabilidade} alt="Contabilidade" />
-              <span>International Tax</span>
+              <span>{t("International Taxes")}</span>
             </div>
           </button>
         </li>
@@ -108,9 +88,7 @@ function Services() {
           <button onClick={() => handleModal("incorporating")}>
             <div>
               <img src={imigracao} alt="incorporating" />
-              <span>
-                Incorporating <br /> Companies
-              </span>
+              <span>{t("Business Incorporation")}</span>
             </div>
           </button>
         </li>
@@ -118,9 +96,7 @@ function Services() {
           <button onClick={() => handleModal("investment")}>
             <div>
               <img src={investimentos} alt="Investments" />
-              <span>
-                Investment <br /> {"&"} <br /> Management
-              </span>
+              <span>{t("Investment and Management")}</span>
             </div>
           </button>
         </li>

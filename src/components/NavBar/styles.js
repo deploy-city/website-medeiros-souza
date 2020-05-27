@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { shade } from "polished";
 
 export const Button = styled.button`
   height: 100px;
@@ -50,6 +51,7 @@ export const Container = styled.div`
     ul {
       list-style: none;
       padding: 0;
+      position: relative;
 
       @media (max-width: 768px) {
         display: flex;
@@ -74,6 +76,84 @@ export const Container = styled.div`
           background: transparent;
         }
       }
+    }
+  }
+`;
+
+export const LanguageBox = styled.div`
+  height: 0;
+  width: 200px;
+
+  background: #fff;
+  border-radius: 8px;
+
+  right: 0;
+  top: 60px;
+
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+
+  transition: 0.1s;
+
+  ${(props) =>
+    props.open &&
+    css`
+      height: 200px;
+    `}
+
+  &::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-bottom: 20px solid #fff;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+
+    ${(props) =>
+      !props.open &&
+      css`
+        display: none;
+      `}
+
+    transition: 0.1s;
+
+    left: 125px;
+    top: -20px;
+    position: absolute;
+  }
+
+  button {
+    padding-left: 10px;
+    display: none;
+    transition: 0.2s;
+    background: #c4c4c4;
+
+    ${(props) =>
+      props.open &&
+      css`
+        display: flex;
+        flex: 1;
+        justify-content: flex-start;
+        align-items: center;
+      `}
+
+    &:hover {
+      background: ${shade(0.1, "#fff")};
+    }
+
+    & + button {
+      border-top: 1px solid #d4d4d4 !important;
+    }
+
+    img {
+      height: 40px;
+    }
+
+    span {
+      color: #000 !important;
+      margin-left: 10px;
     }
   }
 `;

@@ -34,6 +34,7 @@ export const Container = styled.div`
         color: #fff;
         font-weight: bold;
         font-size: 22px;
+        text-transform: uppercase;
       }
 
       input {
@@ -66,6 +67,7 @@ export const Container = styled.div`
         border: 0;
         width: auto;
         border-radius: 12px;
+        text-transform: uppercase;
         font-weight: bold;
         font-size: 16px;
         cursor: pointer;

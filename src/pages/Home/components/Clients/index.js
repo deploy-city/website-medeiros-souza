@@ -1,5 +1,6 @@
 import React from "react";
 import { MdArrowForward } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 import SideTag from "../../../../components/SideTag";
 
@@ -11,19 +12,19 @@ import cityconnect from "../../../../assets/images/clients/cityconnect.png";
 import { Container } from "./styles";
 
 function Clients() {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <SideTag side="right">
-        <strong>PARTNERS</strong>
+        <strong>{t("Partners")}</strong>
       </SideTag>
       <ul>
         <li>
           <div>
             <img src={dayOne} alt="Day 1" />
             <p>
-              <b>Day 1 Photographs</b> was created from the passion of those who
-              love to be behind the lens, taking breathtaking photos for all of
-              you to see!
+              <b>Day 1 Photographs</b> {t("DayOneText")}
             </p>
 
             <a
@@ -31,15 +32,13 @@ function Clients() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              More about Day 1 Photographs <MdArrowForward size={24} />
+              {t("More About")} Day 1 Photographs <MdArrowForward size={24} />
             </a>
           </div>
           <div>
             <img src={cityconnect} alt="City Connect" />
             <p>
-              <b>City Connect</b> was born for innovation, and has grew up with
-              it, developing initiatives wich sustain the market in viable
-              solutions.
+              <b>City Connect</b> {t("CityConnectText")}
             </p>
 
             <a
@@ -47,15 +46,13 @@ function Clients() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              More about City Connect <MdArrowForward size={24} />
+              {t("More About")} City Connect <MdArrowForward size={24} />
             </a>
           </div>
           <div>
             <img src={raise} alt="Raise Investments" />
             <p>
-              <b>Raise Investments</b> are a company capturing opportunities for
-              investments in residential developments in the state of Florida in
-              the United States.
+              <b>Raise Investments</b> {t("RaiseInvestmentsText")}
             </p>
 
             <a
@@ -63,18 +60,18 @@ function Clients() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              More about Raise Investments <MdArrowForward size={24} />
+              {t("More About")} Raise Investments <MdArrowForward size={24} />
             </a>
           </div>
           <div>
             <img src={rps} alt="RPS" />
             <p>
-              <b>Restoration Precare Solutions</b> dolor sit amet, consectetur
-              adipiscing elit. Nulla in consectetur diam. Aenean ut libero nec.
+              <b>Restoration Precare Solutions</b>{" "}
+              {t("RestorationPrecareSolutionsText")}
             </p>
 
             <a href="">
-              More about RPS <MdArrowForward size={24} />
+              {t("More About")} RPS <MdArrowForward size={24} />
             </a>
           </div>
         </li>

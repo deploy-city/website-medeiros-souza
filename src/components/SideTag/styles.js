@@ -18,6 +18,7 @@ export const Container = styled.div`
     css`
       background: url(${tag});
     `}
+
   ${(props) =>
     props.side === "left" &&
     css`
@@ -32,5 +33,6 @@ export const Container = styled.div`
   strong {
     font-weight: bold;
     color: #fff;
+    text-transform: uppercase;
   }
 `;

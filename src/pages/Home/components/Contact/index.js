@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 import "react-toastify/dist/ReactToastify.min.css";
 
 import SideTag from "../../../../components/SideTag";
@@ -12,6 +13,8 @@ import { Container, MapsContainer } from "./styles";
 
 function Contact() {
   const [loading, setLoading] = useState(false);
+
+  const { t } = useTranslation();
 
   const formRef = useRef(null);
 
@@ -53,11 +56,13 @@ function Contact() {
   return (
     <Container id="contact">
       <SideTag side="left">
-        <strong>CONTACT</strong>
+        <strong>{t("Contact")}</strong>
       </SideTag>
       <div>
         <form ref={formRef} onSubmit={handleSubmit(handleContactForm)}>
-          <label htmlFor="name">YOUR NAME (REQUIRED): </label>
+          <label htmlFor="name">
+            {t("Your name")} ({t("Required")}):
+          </label>
           <input
             ref={register({ required: true })}
             id="name"
@@ -67,7 +72,9 @@ function Contact() {
           />
           {errors.name && <span>E-mail field is required</span>}
 
-          <label htmlFor="">YOUR E-MAIL (REQUIRED): </label>
+          <label htmlFor="">
+            {t("Your email")} ({t("Required")}):
+          </label>
           <input
             ref={register({ required: true })}
             id="email"
@@ -77,13 +84,13 @@ function Contact() {
           />
           {errors.email && <span>E-mail field is required</span>}
 
-          <label htmlFor="">SUBJECT:</label>
+          <label htmlFor="">{t("Subject")}:</label>
           <input ref={register} id="subject" name="subject" type="text" />
 
-          <label htmlFor="">YOUR MESSAGE HERE</label>
+          <label htmlFor="">{t("Your message here")}:</label>
           <textarea ref={register} id="message" name="message" type="text" />
           <button type="submit" disabled={loading}>
-            {loading ? "SENDING..." : "SUBMIT"}
+            {loading ? "SENDING..." : t("Submit")}
           </button>
         </form>
 
