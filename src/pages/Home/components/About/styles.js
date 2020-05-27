@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   padding: 50px 0 80px;
   display: flex;
+  position: relative;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -24,6 +25,11 @@ export const Container = styled.div`
 
     @media (max-width: 768px) {
       padding: 40px 30px 0 20px;
+    }
+
+    &.side-tag {
+      position: absolute;
+      top: 70px;
     }
 
     p {

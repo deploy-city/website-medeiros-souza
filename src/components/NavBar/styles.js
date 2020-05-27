@@ -51,6 +51,9 @@ export const Container = styled.div`
     ul {
       list-style: none;
       padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
       position: relative;
 
       @media (max-width: 768px) {

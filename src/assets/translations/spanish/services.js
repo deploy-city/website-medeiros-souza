@@ -38,7 +38,7 @@ export default {
   "Investment and Management": "Inversión & Gestión",
   InvestmentAndManagementText,
 
-  Services: "Services",
+  Services: "Servicios",
 
   "Tax and Accounting": "Impuestos y Contabilidad",
   TaxAndAccountingText,

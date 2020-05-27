@@ -24,15 +24,21 @@ export const Container = styled.div`
 
     h2 {
       margin-bottom: 10px;
+      text-transform: uppercase;
     }
 
     div {
       color: rgba(255, 255, 255, 0.7);
       margin-bottom: 20px;
+
+      span.uppercase {
+        text-transform: uppercase;
+      }
     }
 
     h3 {
       margin-top: 20px;
+      text-transform: uppercase;
     }
 
     input {
@@ -54,6 +60,7 @@ export const Container = styled.div`
       font-size: 16px;
       cursor: pointer;
       transition: 0.1s;
+      text-transform: uppercase;
 
       &:hover {
         background: ${darken(0.1, "#ff000c")};

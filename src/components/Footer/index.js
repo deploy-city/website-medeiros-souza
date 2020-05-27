@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import instagram from "../../assets/images/instagram.svg";
 import linkedin from "../../assets/images/linkedin.svg";
@@ -10,6 +11,8 @@ import { Container, Social, GoUp } from "./styles";
 export default function Footer() {
   const [message, setMessage] = useState("");
 
+  const { t } = useTranslation();
+
   async function register() {
     console.log(message);
   }
@@ -18,7 +21,7 @@ export default function Footer() {
     <>
       <Container>
         <div>
-          <h2>CONTACT INFORMATION</h2>
+          <h2>{t("Contact Information")}</h2>
           <div>
             <span>ADDRESS: 845 N GARLAND AVE, STE 100</span>
             <span>ORLANDO</span>
@@ -26,7 +29,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <span>PHONE:</span>
+            <span className="uppercase">{t("Phone")}:</span>
             <span>407-326-8484</span>
           </div>
 
@@ -42,10 +45,14 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2>FOLLOW US</h2>
+          <h2>{t("Follow Us")}</h2>
 
           <Social>
-            <a href="http://instagram.com/MedeirosSouzaTax" target="_blank">
+            <a
+              href="http://instagram.com/MedeirosSouzaTax"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div>
                 <img src={instagram} alt="IG" />
               </div>
@@ -53,6 +60,7 @@ export default function Footer() {
             <a
               href="https://www.linkedin.com/feed/update/urn:li:activity:6654500294791086080"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div>
                 <img src={linkedin} alt="IN" />
@@ -61,6 +69,7 @@ export default function Footer() {
             <a
               href="http://fb.com/MedeirosSouzaTax"
               target="_blank"
+              rel="noopener noreferrer"
             >
               <div>
                 <img src={facebook} alt="FB" />
@@ -70,22 +79,22 @@ export default function Footer() {
 
           <h2>MENU</h2>
           <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
+          <a href="#about">{t("About")}</a>
+          <a href="#services">{t("Services")}</a>
+          <a href="#contact">{t("Contact")}</a>
         </div>
 
         <div>
-          <h2>DO YOU WANT TO RECEIVE NEWS BY EMAIL?</h2>
+          <h2>{t("Do you want to receive news by email")}</h2>
 
-          <h3>REGISTER: </h3>
+          <h3>{t("Register")}: </h3>
 
           <input
             type="text"
             onChange={(e) => setMessage(e.target.value)}
-            placeholder="Write your e-mail"
+            placeholder={t("Write your e-mail")}
           />
-          <button onClick={register}>SEND</button>
+          <button onClick={register}>{t("Send")}</button>
         </div>
       </Container>
       <GoUp onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
