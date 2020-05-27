@@ -15,7 +15,7 @@ export default {
   CityConnectText,
   DayOneText,
   "More About": "Mais Sobre",
-  Partners: "Parceiros",
+  Clients: "Clientes",
   RaiseInvestmentsText,
   RestorationPrecareSolutionsText,
 };

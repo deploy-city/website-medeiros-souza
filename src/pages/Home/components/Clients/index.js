@@ -17,7 +17,7 @@ function Clients() {
   return (
     <Container>
       <SideTag side="right">
-        <strong>{t("Partners")}</strong>
+        <strong>{t("Clients")}</strong>
       </SideTag>
       <ul>
         <li>
