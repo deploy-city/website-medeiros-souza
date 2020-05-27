@@ -93,6 +93,11 @@ export const LanguageBox = styled.div`
   right: 0;
   top: 60px;
 
+  @media (max-width: 768px) {
+    top: 240px;
+    right: -33px;
+  }
+
   display: flex;
   flex-direction: column;
 
@@ -123,6 +128,11 @@ export const LanguageBox = styled.div`
     transition: 0.1s;
 
     left: 125px;
+
+    @media (max-width: 768px) {
+      left: calc(50% - 20px);
+    }
+
     top: -20px;
     position: absolute;
   }

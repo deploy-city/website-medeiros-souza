@@ -49,7 +49,7 @@ export const Container = styled.div`
         -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
         box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           & + div {
             margin-top: 10px;
           }
