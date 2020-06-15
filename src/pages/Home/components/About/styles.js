@@ -29,6 +29,7 @@ export const Container = styled.div`
 
     &.side-tag {
       position: absolute;
+      padding: 0;
       top: 70px;
     }
 
