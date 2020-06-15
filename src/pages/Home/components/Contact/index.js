@@ -25,7 +25,7 @@ function Contact() {
     const { name, email, subject, message: text } = data;
 
     const emailRegex = new RegExp(
-      /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
+      /(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
     );
 
     if (!emailRegex.test(email)) {
@@ -58,7 +58,7 @@ function Contact() {
       <SideTag side="left">
         <strong>{t("Contact")}</strong>
       </SideTag>
-      <div>
+      <div className="content">
         <form ref={formRef} onSubmit={handleSubmit(handleContactForm)}>
           <label htmlFor="name">
             {t("Your name")} ({t("Required")}):

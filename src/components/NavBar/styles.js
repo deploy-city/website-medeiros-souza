@@ -93,17 +93,17 @@ export const LanguageBox = styled.div`
   right: 0;
   top: 60px;
 
-  @media (max-width: 768px) {
-    top: 240px;
-    right: -33px;
-  }
-
   display: flex;
   flex-direction: column;
 
   position: absolute;
 
   transition: 0.1s;
+
+  @media (max-width: 768px) {
+    top: 240px;
+    right: -33px;
+  }
 
   ${(props) =>
     props.open &&
@@ -129,12 +129,12 @@ export const LanguageBox = styled.div`
 
     left: 125px;
 
+    top: -20px;
+    position: absolute;
+
     @media (max-width: 768px) {
       left: calc(50% - 20px);
     }
-
-    top: -20px;
-    position: absolute;
   }
 
   button {

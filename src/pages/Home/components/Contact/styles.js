@@ -10,24 +10,27 @@ export const Container = styled.div`
   justify-content: center;
   background: url(${contact});
   background-size: cover;
-  height: 800px;
   padding-bottom: 50px;
 
   img {
     width: 300px;
   }
 
-  div {
+  div.content {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 0 20px;
 
+    @media (max-width: 650px) {
+      flex-direction: column;
+    }
+
     form {
       display: flex;
       flex-direction: column;
-      width: 700px;
+      flex: 1;
 
       label {
         margin-bottom: 10px;
@@ -83,9 +86,16 @@ export const Container = styled.div`
 
 export const MapsContainer = styled.div`
   margin: 20px 0 0 100px;
-  height: 550px !important;
-  width: 650px !important;
+  height: 550px;
+  width: 650px;
   border-radius: 4px;
   overflow-x: hidden;
   position: relative;
+
+  @media (max-width: 640px) {
+    margin: 30px 0 0;
+
+    width: calc(100% - 10px);
+    height: 300px;
+  }
 `;
