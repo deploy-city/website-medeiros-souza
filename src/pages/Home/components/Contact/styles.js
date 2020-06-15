@@ -10,7 +10,7 @@ export const Container = styled.div`
   justify-content: center;
   background: url(${contact});
   background-size: cover;
-  padding-bottom: 50px;
+  padding: 20px 0 50px;
 
   img {
     width: 300px;
