@@ -69,6 +69,7 @@ function Clients() {
             {t("RestorationPrecareSolutionsText")}
           </p>
 
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href="">
             {t("More About")} RPS <MdArrowForward size={24} />
           </a>

@@ -3,7 +3,7 @@ import { MdImage, MdDelete, MdEdit } from "react-icons/md";
 
 import AdminBox from "../../../../components/AdminBox";
 import Checkbox from "../../../../components/Checkbox";
-import api, { baseURL } from "../../../../services/api";
+import api from "../../../../services/api";
 
 import { Container } from "./styles";
 import { Link } from "react-router-dom";
